@@ -102,7 +102,21 @@ export default function App() {
   async function handleInstall() {
     if (!installPrompt) return;
     installPrompt.prompt();
-    const result = await installPrompt.userChoice;
+    const res = await fetch("https://api.allorigins.win/raw?url=" + encodeURIComponent("https://api.anthropic.com/v1/messages"), {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": process.env.REACT_APP_ANTHROPIC_KEY,
+    "anthropic-version": "2023-06-01",
+    "anthropic-dangerous-direct-browser-ipc": "true"
+  },
+  body: JSON.stringify({
+    model: "claude-sonnet-4-20250514",
+    max_tokens: 1000,
+    system: SYSTEM_PROMPT,
+    messages: apiMessages,
+  }),
+});
     if (result.outcome === "accepted") {
       setShowInstallBanner(false);
       setInstallPrompt(null);
