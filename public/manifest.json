@@ -1,0 +1,13 @@
+{
+  "short_name": "Mamawise",
+  "name": "Mamawise — Your Baby Friend",
+  "icons": [
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#FF8C69",
+  "background_color": "#FFF9F5"
+}
